@@ -1,0 +1,21 @@
+.multiselect.dropdown .dropdown-menu{
+    background-color: #e6f0ff;
+}
+
+.multiselect .buttons{
+    margin: 0 0 1em 0;
+}
+
+.multiselect .buttons .btn{
+    margin: 0 0 0 0.5em;
+}
+
+.multiselect .buttons .btn:first-child{
+    margin: 0;
+}
+
+.multiselect .items label{
+    font-size: 1rem;
+}
+
+
