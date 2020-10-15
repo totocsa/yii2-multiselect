@@ -28,9 +28,11 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?= \totocsa\AutoloadExample::widget(); ?>```
+<?= \totocsa\AutoloadExample::widget(); ?>
+```
 
 In model's Search file:
+
 ```php
     public function init() {
         parent::init();
