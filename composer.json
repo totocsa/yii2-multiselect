@@ -1,0 +1,21 @@
+{
+    "name": "totocsa/yii2-multiselect",
+    "description": "Multi select for grid view with Bootstrap 4",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","multiselect for grid view"],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Tóth Csaba",
+            "email": "totocsa@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "totocsa\\": ""
+        }
+    }
+}
