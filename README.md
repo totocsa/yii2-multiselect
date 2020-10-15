@@ -32,35 +32,34 @@ Once the extension is installed, simply use it in your code by  :
 ```
 
 In model's Search file:
-
 ```php
-    public function init() {
-        parent::init();
+public function init() {
+    parent::init();
 
-        $this->statusid = ArrayHelper::getColumn(Status::find()
-                                ->orderBy(['name' => SORT_ASC])
-                                ->all(), 'id');
-    }
+    $this->statusid = ArrayHelper::getColumn(Status::find()
+                            ->orderBy(['name' => SORT_ASC])
+                            ->all(), 'id');
+}
 
-    public function rules() {
-        return [
-        ...
-            [['statusid', 'vehicleid', 'operatingsystemid'], 'each', 'rule' => ['integer']],
-        ...
-        ];
-    }
-
-    public function search($params) {
+public function rules() {
+    return [
     ...
-        if (is_array($this->statusid)) {
-            if (count($this->statusid) > 0) {
-                $query->andFilterWhere(['in', 'human.statusid', $this->statusid]);
-            } else {
-                $query->andWhere('false');
-            }
+        [['statusid', 'vehicleid', 'operatingsystemid'], 'each', 'rule' => ['integer']],
+    ...
+    ];
+}
+
+public function search($params) {
+...
+    if (is_array($this->statusid)) {
+        if (count($this->statusid) > 0) {
+            $query->andFilterWhere(['in', 'human.statusid', $this->statusid]);
         } else {
             $query->andWhere('false');
         }
-    ....
+    } else {
+        $query->andWhere('false');
     }
+....
+}
 ```
