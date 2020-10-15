@@ -22,8 +22,10 @@ $(document).ready(function () {
 
     $("body").on("click", ".multiselect .multiselect-filter + label", function () {
         var forid = $(this).attr("for");
-        var checked = $("#" + forid).prop("checked");
-        $("#" + forid).prop("checked", !checked);
+        var selector = "#" + forid;
+        var checked = $(selector).prop("checked");
+        $(selector).prop("checked", !checked);
+
         return false;
     });
 });
