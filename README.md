@@ -30,8 +30,25 @@ Once the extension is installed, simply use it in your code by  :
 ```php
 <?= \totocsa\MultiSelect::widget(); ?>
 ```
+In the grid view:
+```php
+[
+    'attribute' => 'statusid',
+    'value' => function($model, $key, $index, $column) {
+        /* @var $model app\models\Human */
+        return $model->status->name;
+    },
+    'filter' => MultiSelect::widget([
+        'model' => $searchModel,
+        'attribute' => 'statusid',
+        'items' => ArrayHelper::map(Status::find()
+                        ->orderBy(['name' => SORT_ASC])
+                        ->all(), 'id', 'name'),
+    ]),
+],
+```
 
-In model's Search file:
+In the Search file:
 ```php
 public function init() {
     parent::init();
