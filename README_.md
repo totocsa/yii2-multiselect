@@ -28,7 +28,12 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php
+<<<<<<< HEAD
 <?= \totocsa\MultiSelect::widget(); ?>```
+=======
+<?= \totocsa\AutoloadExample::widget(); ?>
+```
+>>>>>>> 08b8a48785991c06bfc67700cb677bdb6ef59cd6
 
 In model's Search file:
 ```php
@@ -61,4 +66,8 @@ public function search($params) {
     }
 ....
 }
+<<<<<<< HEAD
 ```
+=======
+```
+>>>>>>> 08b8a48785991c06bfc67700cb677bdb6ef59cd6
