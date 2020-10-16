@@ -28,7 +28,7 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?= \totocsa\MultiSelect::widget(); ?>```
+<?= \totocsa\MultiSelect::widget(); ?>
 
 In model's Search file:
 ```php
@@ -61,4 +61,3 @@ public function search($params) {
     }
 ....
 }
-```
