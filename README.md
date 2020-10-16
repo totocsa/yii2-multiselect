@@ -1,6 +1,6 @@
 Multiselect for grid view
 =========================
-Multi select for grid view with Bootstrap 4
+Multiselect for grid view with Bootstrap 4
 
 Installation
 ------------
