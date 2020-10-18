@@ -27,9 +27,6 @@ Usage
 
 Once the extension is installed, simply use it in your code by  :
 
-```php
-<?= \totocsa\MultiSelect::widget(); ?>
-```
 In the grid view:
 ```php
 [
