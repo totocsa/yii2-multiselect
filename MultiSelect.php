@@ -11,7 +11,7 @@ class MultiSelect extends \yii\bootstrap4\ButtonDropdown {
 
     public $formConfig = [
         'enableAjaxValidation' => false,
-        'enableClientValidation' => false,
+         'enableClientValidation' => false,
     ];
     public $model;
     public $attribute;
