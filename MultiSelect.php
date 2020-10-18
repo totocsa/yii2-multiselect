@@ -5,6 +5,7 @@ namespace totocsa;
 use Yii;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\ActiveForm;
+use yii\bootstrap4\ButtonGroup;
 use totocsa\MultiSelectAsset;
 
 class MultiSelect extends \yii\bootstrap4\ButtonDropdown {
@@ -17,6 +18,7 @@ class MultiSelect extends \yii\bootstrap4\ButtonDropdown {
     public $attribute;
     public $items = [];
     public $fieldTemplate = "{input}\n{hint}\n{error}";
+    public $buttonGroup = false;
     public $checkboxListOptions = [
         'encode' => false,
         'itemOptions' => [
@@ -24,25 +26,25 @@ class MultiSelect extends \yii\bootstrap4\ButtonDropdown {
         ],
     ];
     public $allButton = [
-        'content' => 'All',
+        'label' => 'All',
         'options' => [
             'class' => 'btn btn-success btn-sm multiselect-all',
         ],
     ];
     public $noneButton = [
-        'content' => 'None',
+        'label' => 'None',
         'options' => [
             'class' => 'btn btn-danger btn-sm multiselect-none',
         ],
     ];
     public $applyButton = [
-        'content' => 'Apply',
+        'label' => 'Apply',
         'options' => [
             'class' => 'btn btn-primary btn-sm multiselect-apply',
         ],
     ];
     public $closeButton = [
-        'content' => 'Close',
+        'label' => 'Close',
         'options' => [
             'class' => 'btn btn-secondary btn-sm multiselect-close',
         ],
@@ -81,10 +83,7 @@ class MultiSelect extends \yii\bootstrap4\ButtonDropdown {
         $field->template = $this->fieldTemplate;
 
         $content = '<div class="buttons">'
-                . Html::button($this->allButton['content'], $this->allButton['options'])
-                . Html::button($this->noneButton['content'], $this->noneButton['options'])
-                . Html::button($this->applyButton['content'], $this->applyButton['options'])
-                . Html::button($this->closeButton['content'], $this->closeButton['options'])
+                . $this->renderButtons()
                 . '</div>'
                 . '<div class="items">'
                 . $field->checkboxList($this->items, $this->checkboxListOptions)
@@ -93,35 +92,22 @@ class MultiSelect extends \yii\bootstrap4\ButtonDropdown {
         return $content;
     }
 
-}
+    public function renderButtons() {
+        if ($this->buttonGroup) {
+            return ButtonGroup::widget([
+                        'buttons' => [
+                            $this->allButton,
+                            $this->noneButton,
+                            $this->applyButton,
+                            $this->closeButton,
+                        ],
+            ]);
+        } else {
+            return Html::button($this->allButton['label'], $this->allButton['options'])
+                    . Html::button($this->noneButton['label'], $this->noneButton['options'])
+                    . Html::button($this->applyButton['label'], $this->applyButton['options'])
+                    . Html::button($this->closeButton['label'], $this->closeButton['options']);
+        }
+    }
 
-/*
-  use yii\bootstrap4\ButtonGroup;
-  ButtonGroup::widget([
-                  'buttons' => [
-                  [
-                  'label' => 'All',
-                  'options' => [
-                  'class' => 'btn btn-new btn-sm multiselect-all',
-                  ]
-                  ],
-                  [
-                  'label' => 'None',
-                  'options' => [
-                  'class' => 'btn btn-delete btn-sm multiselect-none',
-                  ],
-                  ],
-                  [
-                  'label' => 'Set',
-                  'options' => [
-                  'class' => 'btn btn-sm btn-index multiselect-set',
-                  ],
-                  ],
-                  [
-                  'label' => 'Close',
-                  'options' => [
-                  'class' => 'btn btn-close btn-sm multiselect-close',
-                  ],
-                  ],
-                  ],
-                  ]) */
+}
